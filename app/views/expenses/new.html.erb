@@ -1,0 +1,17 @@
+<h2>Cadastrar uma despesa</h2>
+
+<%= form_for(@expense) do |f| %>
+  <div>
+    <%= f.label :title, 'Descrição' %>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :value, 'Valor' %>
+    <%= f.text_field :value %>
+  </div>
+  <div>
+    <%= f.label :cost_center, 'Centro de Custo' %>
+    <%= f.text_field :cost_center %>
+  </div>
+  <%= f.submit 'Salvar' %>
+<% end %>
