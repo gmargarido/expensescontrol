@@ -213,16 +213,30 @@
         null,
         1,
         1,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
+        null,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
         null,
         null
       ],
@@ -265,6 +279,7 @@
       ],
       "/home/gmargarido/Projects/expensescontrol/app/models/expense_report.rb": [
         1,
+        1,
         null
       ],
       "/home/gmargarido/Projects/expensescontrol/app/models/application_record.rb": [
@@ -287,8 +302,8 @@
       "/home/gmargarido/Projects/expensescontrol/app/controllers/home_controller.rb": [
         1,
         1,
-        7,
-        7,
+        9,
+        9,
         null,
         null
       ],
@@ -317,15 +332,30 @@
         null,
         null
       ],
-      "/home/gmargarido/Projects/expensescontrol/app/controllers/expense_report_controller.rb": [
+      "/home/gmargarido/Projects/expensescontrol/app/controllers/expense_reports_controller.rb": [
         1,
         1,
         null,
         1,
+        2,
+        null,
+        null,
+        1,
+        2,
+        null,
+        null,
+        2,
+        null,
+        2,
+        1,
+        null,
+        1,
+        1,
+        null,
         null,
         null
       ]
     },
-    "timestamp": 1523914035
+    "timestamp": 1523929187
   }
 }

@@ -1,0 +1,24 @@
+<h2>Cadastrar um relatório</h2>
+
+<%= form_for(@expense_report) do |f|%>
+  <div>
+    <%= f.label :title, 'Descrição'%>
+    <%= f.text_field :title %>
+  </div>
+  <div>
+    <%= f.label :start_date, 'Data inicial'%>
+    <%= f.text_field :start_date%>
+  </div>
+  <div>
+    <%= f.label :end_date, 'Data final'%>
+    <%= f.text_field :end_date%>
+  </div>
+  <div>
+    <%= f.label 'Carro próprio?'%>
+    <%= f.radio_button :own_car, true %>
+    <%= label :own_car, 'Sim'%>
+    <%= f.radio_button :own_car, false %>
+    <%= label :own_car, 'Não'%>
+  </div>
+  <%= f.submit 'Cadastrar' %>
+<% end %>
