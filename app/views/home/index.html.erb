@@ -5,14 +5,3 @@
 <% @expense_reports.each do |report| %>
   <%= link_to report.title, expense_report_path(report) %>
 <% end %>
-
-
-<h3>Despesas</h3>
-<%= link_to 'Cadastrar uma despesa', new_expense_path %>
-<ul>
-  <% @expenses.each do |expense| %>
-    <li>Descrição: <%= expense.title %></li>
-    <li>Valor: R$ <%= expense.value %> </li>
-    <li>Centro de Custo:  <%= expense.cost_center %> </li>
-  <% end %>
-</ul>

@@ -1,6 +1,6 @@
 <h2>Cadastrar uma despesa</h2>
 
-<%= form_for(@expense) do |f| %>
+<%= form_for([@expense_report, @expense]) do |f| %>
   <div>
     <%= f.label :title, 'Descrição' %>
     <%= f.text_field :title %>

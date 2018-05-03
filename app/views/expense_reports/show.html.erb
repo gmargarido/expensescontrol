@@ -1,0 +1,11 @@
+<h3><%= @expense_report.title %></h3>
+
+<h4>Despesas</h4>
+<%= link_to 'Cadastrar uma despesa', new_expense_report_expense_path(@expense_report) %>
+<ul>
+  <% @expense_report.expenses.each do |expense| %>
+    <li>Descrição: <%= expense.title %></li>
+    <li>Valor: R$ <%= expense.value %> </li>
+    <li>Centro de Custo:  <%= expense.cost_center %> </li>
+  <% end %>
+</ul>

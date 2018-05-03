@@ -3,10 +3,15 @@ require 'rails_helper'
 feature 'Visitor view a expense in home' do
   scenario 'successfully' do
     # Criação dos dados
-    expense = Expense.create(title: 'Combustivel', value: 150, cost_center: 'São Paulo')
+    expense_report = ExpenseReport.create(title: 'Despesas de Abril',
+                                          start_date: '01/04/2018',
+                                          end_date: '30/04/2018',
+                                          own_car: false)
+    expense = Expense.create(title: 'Combustivel', value: 150, cost_center: 'São Paulo', expense_report: expense_report)
 
     # Navegação
     visit root_path
+    click_on expense_report.title
 
     # Expectativa
     expect(page).to have_css('h3', text: 'Despesas')

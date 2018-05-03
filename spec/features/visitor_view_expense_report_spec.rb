@@ -27,8 +27,7 @@ feature 'Visitor view a expense report' do
     click_on 'Cadastrar'
 
     #Expectativa
-    expect(page).to have_css('h3', text: 'Relatórios de Despesas')
-    expect(page).to have_css('a', text: 'Despesas de Maio')
+    expect(page).to have_css('h3', text: 'Despesas de Maio')
   end
 
   scenario 'and must fill all fields to add' do
