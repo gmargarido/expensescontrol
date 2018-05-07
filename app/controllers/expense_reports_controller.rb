@@ -12,6 +12,7 @@ class ExpenseReportsController < ApplicationController
                                   :end_date, :own_car)
 
     @expense_report = ExpenseReport.create(report_params)
+    @expense_report.user = current_user
 
     if @expense_report.save
       redirect_to expense_report_path(@expense_report)

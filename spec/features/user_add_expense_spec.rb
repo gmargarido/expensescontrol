@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-feature 'Visitor add a expense' do
+feature 'User add a expense' do
   scenario 'successfully' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
-                                          own_car: false)
+                                          own_car: false,
+                                          user: user)
 
     # Navegação
     visit root_path
@@ -35,7 +36,8 @@ feature 'Visitor add a expense' do
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
-                                          own_car: false)
+                                          own_car: false,
+                                          user: user)
 
     # Navegação
     visit root_path

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507175737) do
+ActiveRecord::Schema.define(version: 20180507192910) do
 
   create_table "expense_reports", force: :cascade do |t|
     t.string "title"
@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20180507175737) do
     t.boolean "own_car"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_expense_reports_on_user_id"
   end
 
   create_table "expenses", force: :cascade do |t|

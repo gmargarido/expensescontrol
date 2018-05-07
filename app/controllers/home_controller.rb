@@ -1,7 +1,6 @@
 class HomeController < ApplicationController
   before_action :authenticate_user!
   def index
-    @expenses = Expense.all
-    @expense_reports = ExpenseReport.all
+    @expense_reports = current_user.expense_reports.all
   end
 end

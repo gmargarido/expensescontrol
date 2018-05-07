@@ -1,13 +1,23 @@
 require 'rails_helper'
 
-feature 'Visitor view a expense report' do
+feature 'User view a expense report' do
   scenario 'successfully' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
-                                          own_car: false)
+                                          own_car: false,
+                                          user: user)
+
+    other_user = User.create(email: 'joaorsalmeida@gmail.com', password: '12345678')
+    other_expense_report = ExpenseReport.create(title: 'Despesas de Maio',
+                                          start_date: '01/05/2018',
+                                          end_date: '30/05/2018',
+                                          own_car: false,
+                                          user: other_user)
+
+
 
     # Navegação
     visit root_path
@@ -18,6 +28,7 @@ feature 'Visitor view a expense report' do
     # Expectativa
     expect(page).to have_css('h3', text: 'Relatórios de Despesas')
     expect(page).to have_css('a', text: 'Despesas de Abril')
+    expect(page).not_to have_css('a', text: 'Despesas de Maio')
   end
 
   scenario 'created by him' do
