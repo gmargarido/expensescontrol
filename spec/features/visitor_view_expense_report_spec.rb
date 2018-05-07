@@ -3,12 +3,17 @@ require 'rails_helper'
 feature 'Visitor view a expense report' do
   scenario 'successfully' do
     # Criação dos dados
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
                                           own_car: false)
+
     # Navegação
     visit root_path
+    fill_in 'Email', with: 'glauco.margarido@gmail.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Log in'
 
     # Expectativa
     expect(page).to have_css('h3', text: 'Relatórios de Despesas')
@@ -17,8 +22,13 @@ feature 'Visitor view a expense report' do
 
   scenario 'created by him' do
     # Criação dos dados
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+
     # Navegação
     visit root_path
+    fill_in 'Email', with: 'glauco.margarido@gmail.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Log in'
     click_on 'Cadastrar um relatório de despesas'
     fill_in 'Descrição', with: 'Despesas de Maio'
     fill_in 'Data inicial', with: '01/05/2018'
@@ -32,8 +42,13 @@ feature 'Visitor view a expense report' do
 
   scenario 'and must fill all fields to add' do
     # Criação dos dados
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+
     # Navegação
     visit root_path
+    fill_in 'Email', with: 'glauco.margarido@gmail.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Log in'
     click_on 'Cadastrar um relatório de despesas'
     fill_in 'Descrição', with: ''
     fill_in 'Data inicial', with: ''

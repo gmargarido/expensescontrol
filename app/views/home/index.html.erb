@@ -1,7 +1,10 @@
 <h1>Bem-vindo ao Controle de Despesas</h1>
 
 <h3>Relatórios de Despesas</h3>
-<%= link_to 'Cadastrar um relatório de despesas', new_expense_report_path %>
+<div>
+  <%= link_to 'Cadastrar um relatório de despesas', new_expense_report_path %>
+</div>
 <% @expense_reports.each do |report| %>
+  <br />
   <%= link_to report.title, expense_report_path(report) %>
 <% end %>

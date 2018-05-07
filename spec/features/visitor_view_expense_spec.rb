@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Visitor view a expense in home' do
   scenario 'successfully' do
     # Criação dos dados
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
@@ -11,6 +12,9 @@ feature 'Visitor view a expense in home' do
 
     # Navegação
     visit root_path
+    fill_in 'Email', with: 'glauco.margarido@gmail.com'
+    fill_in 'Senha', with: '12345678'
+    click_on 'Log in'
     click_on expense_report.title
 
     # Expectativa
