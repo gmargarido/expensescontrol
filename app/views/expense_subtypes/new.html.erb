@@ -13,5 +13,9 @@
     <%= f.label :accounting_account, 'Conta Contábil' %>
     <%= f.text_field :accounting_account %>
   </div>
+    <div>
+    <%= f.label :needs_customer, 'Precisa de um cliente?' %>
+    <%= select(:needs_customer,false,[['Sim', true], ['Não', false]]) %>
+  </div>
   <%= f.submit 'Cadastrar' %>
 <% end %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180509150953) do
+ActiveRecord::Schema.define(version: 20180509162306) do
 
   create_table "expense_reports", force: :cascade do |t|
     t.string "title"
@@ -29,6 +29,7 @@ ActiveRecord::Schema.define(version: 20180509150953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "expense_type_id"
+    t.boolean "needs_customer"
     t.index ["expense_type_id"], name: "index_expense_subtypes_on_expense_type_id"
   end
 
