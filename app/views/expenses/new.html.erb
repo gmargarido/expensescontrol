@@ -2,6 +2,10 @@
 
 <%= form_for([@expense_report, @expense]) do |f| %>
   <div>
+    <%= f.label :expense_subtype_id, 'Classificação' %>
+    <%= f.collection_select(:expense_subtype_id, @expense_subtypes, :id, :description) %>
+  </div>
+  <div>
     <%= f.label :title, 'Descrição' %>
     <%= f.text_field :title %>
   </div>

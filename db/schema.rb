@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180507192910) do
+ActiveRecord::Schema.define(version: 20180508232930) do
 
   create_table "expense_reports", force: :cascade do |t|
     t.string "title"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20180507192910) do
     t.index ["user_id"], name: "index_expense_reports_on_user_id"
   end
 
+  create_table "expense_subtypes", force: :cascade do |t|
+    t.string "description"
+    t.string "accounting_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "expense_type_id"
+    t.index ["expense_type_id"], name: "index_expense_subtypes_on_expense_type_id"
+  end
+
+  create_table "expense_types", force: :cascade do |t|
+    t.string "description"
+    t.string "accounting_account"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "expenses", force: :cascade do |t|
     t.string "title"
     t.float "value"
@@ -30,7 +46,9 @@ ActiveRecord::Schema.define(version: 20180507192910) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "expense_report_id"
+    t.integer "expense_subtype_id"
     t.index ["expense_report_id"], name: "index_expenses_on_expense_report_id"
+    t.index ["expense_subtype_id"], name: "index_expenses_on_expense_subtype_id"
   end
 
   create_table "users", force: :cascade do |t|

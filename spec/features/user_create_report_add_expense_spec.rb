@@ -3,12 +3,19 @@ require 'rails_helper'
 feature 'User create a report and add to it a expense' do
   scenario 'successfully' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
-    expense_report = ExpenseReport.create(title: 'Despesas de Abril',
+    user = User.create!(email: 'glauco.margarido@gmail.com', password: '12345678')
+    expense_report = ExpenseReport.create!(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
                                           own_car: false,
                                           user: user)
+
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
+                                              accounting_account: '632.250')
+
+    expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
+                                    accounting_account: '632.250',
+                                    expense_type_id: expense_type.id)
 
     # Navegação
     visit root_path
@@ -17,6 +24,7 @@ feature 'User create a report and add to it a expense' do
     click_on 'Log in'
     click_on 'Despesas de Abril'
     click_on 'Cadastrar uma despesa'
+    select 'Almoço', from: 'Classificação'
     fill_in 'Descrição', with: 'Almoço'
     fill_in 'Valor', with: '25.9'
     fill_in 'Centro de Custo', with: 'São Paulo'

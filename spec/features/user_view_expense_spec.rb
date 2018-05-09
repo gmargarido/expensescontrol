@@ -10,7 +10,16 @@ feature 'User view a expense in home' do
                                           own_car: false,
                                           user: user)
 
-    expense = Expense.create(title: 'Combustivel', value: 150, cost_center: 'São Paulo', expense_report: expense_report)
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
+                                              accounting_account: '632.250')
+
+    expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
+                                    accounting_account: '632.250',
+                                    expense_type_id: expense_type.id)
+
+    expense = Expense.create(title: 'Combustivel', value: 150,
+                    cost_center: 'São Paulo', expense_report: expense_report,
+                  expense_subtype: expense_subtype)
 
     # Navegação
     visit root_path

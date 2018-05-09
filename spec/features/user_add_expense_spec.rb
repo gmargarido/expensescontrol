@@ -10,6 +10,13 @@ feature 'User add a expense' do
                                           own_car: false,
                                           user: user)
 
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
+                                      accounting_account: '632.250')
+
+    expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
+                            accounting_account: '632.250',
+                            expense_type_id: expense_type.id)
+
     # Navegação
     visit root_path
     visit root_path
@@ -18,6 +25,7 @@ feature 'User add a expense' do
     click_on 'Log in'
     click_on expense_report.title
     click_on 'Cadastrar uma despesa'
+    select 'Almoço', from: 'Classificação'
     fill_in 'Descrição', with: 'Almoço'
     fill_in 'Valor', with: '25.9'
     fill_in 'Centro de Custo', with: 'São Paulo'
@@ -38,6 +46,12 @@ feature 'User add a expense' do
                                           end_date: '30/04/2018',
                                           own_car: false,
                                           user: user)
+    expense_type = ExpenseType.create(description: 'Despesa com Hospedagem',
+                                      accounting_account: '632.250')
+
+    expense_subtype = ExpenseSubtype.create(description: 'Almoço',
+                            accounting_account: '632.250',
+                            expense_type_id: expense_type.id)
 
     # Navegação
     visit root_path
