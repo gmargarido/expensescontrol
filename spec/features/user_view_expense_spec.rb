@@ -10,16 +10,14 @@ feature 'User view a expense in home' do
                                           own_car: false,
                                           user: user)
 
-    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
-                                              accounting_account: '632.250')
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
                                     accounting_account: '632.250',
                                     expense_type_id: expense_type.id)
 
-    expense = Expense.create(title: 'Combustivel', value: 150,
-                    cost_center: 'São Paulo', expense_report: expense_report,
-                  expense_subtype: expense_subtype)
+    expense = Expense.create(value: 150, expense_report: expense_report,
+                            expense_subtype: expense_subtype)
 
     # Navegação
     visit root_path
@@ -30,8 +28,6 @@ feature 'User view a expense in home' do
 
     # Expectativa
     expect(page).to have_css('h3', text: 'Despesas')
-    expect(page).to have_css('li', text: 'Combustivel')
     expect(page).to have_css('li', text: '150')
-    expect(page).to have_css('li', text: 'São Paulo')
   end
 end

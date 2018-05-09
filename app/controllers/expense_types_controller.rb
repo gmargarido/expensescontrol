@@ -12,6 +12,7 @@ class ExpenseTypesController < ApplicationController
     if @expense_type.save
       redirect_to @expense_type
     else
+      flash[:error] = 'Não foi possível cadastrar.'
       render :new
     end
   end

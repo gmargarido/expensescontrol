@@ -10,8 +10,7 @@ feature 'User create a report and add to it a expense' do
                                           own_car: false,
                                           user: user)
 
-    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
-                                              accounting_account: '632.250')
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
                                     accounting_account: '632.250',
@@ -25,13 +24,12 @@ feature 'User create a report and add to it a expense' do
     click_on 'Despesas de Abril'
     click_on 'Cadastrar uma despesa'
     select 'Almoço', from: 'Classificação'
-    fill_in 'Descrição', with: 'Almoço'
     fill_in 'Valor', with: '25.9'
-    fill_in 'Centro de Custo', with: 'São Paulo'
     click_on 'Salvar'
 
     # Expectativa
     expect(page).to have_css('h3', text: 'Despesas de Abril')
-    expect(page).to have_css('li', text: 'Almoço')
+    expect(page).to have_css('h6', text: 'Almoço')
+    expect(page).to have_css('li', text: '25.9')
   end
 end

@@ -16,7 +16,7 @@ class ExpenseSubtypesController < ApplicationController
     if @expense_subtype.save
       redirect_to @expense_subtype
     else
-      flash[:error] = 'Não foi possível criar cadastrar.'
+      flash[:error] = 'Não foi possível cadastrar.'
       render :new
     end
   end

@@ -10,8 +10,7 @@ feature 'User add a expense' do
                                           own_car: false,
                                           user: user)
 
-    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem',
-                                      accounting_account: '632.250')
+    expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
                             accounting_account: '632.250',
@@ -26,16 +25,13 @@ feature 'User add a expense' do
     click_on expense_report.title
     click_on 'Cadastrar uma despesa'
     select 'Almoço', from: 'Classificação'
-    fill_in 'Descrição', with: 'Almoço'
     fill_in 'Valor', with: '25.9'
-    fill_in 'Centro de Custo', with: 'São Paulo'
     click_on 'Salvar'
 
     # Expectativa
     expect(page).to have_css('h3', text: 'Despesas')
-    expect(page).to have_css('li', text: 'Almoço')
+    expect(page).to have_css('h6', text: 'Almoço')
     expect(page).to have_css('li', text: '25.9')
-    expect(page).to have_css('li', text: 'São Paulo')
   end
 
   scenario 'and must fill all fields' do
@@ -46,8 +42,7 @@ feature 'User add a expense' do
                                           end_date: '30/04/2018',
                                           own_car: false,
                                           user: user)
-    expense_type = ExpenseType.create(description: 'Despesa com Hospedagem',
-                                      accounting_account: '632.250')
+    expense_type = ExpenseType.create(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create(description: 'Almoço',
                             accounting_account: '632.250',
@@ -61,9 +56,7 @@ feature 'User add a expense' do
     click_on 'Log in'
     click_on expense_report.title
     click_on 'Cadastrar uma despesa'
-    fill_in 'Descrição', with: ''
     fill_in 'Valor', with: ''
-    fill_in 'Centro de Custo', with: ''
     click_on 'Salvar'
 
     # Expectativa
