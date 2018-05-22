@@ -1,4 +1,5 @@
-  <h5><%= @expense_subtype.description %></h5>
+<h5><%= @expense_subtype.description %></h5>
 
-  <p>Conta Contábil: <%= @expense_subtype.accounting_account %></p>
-  <p>Tipo: <%= @expense_subtype.expense_type.description %></p>
+<p>Conta Contábil: <%= @expense_subtype.accounting_account %></p>
+<p>Tipo: <%= @expense_subtype.expense_type.description %></p>
+<p>Precisa de um cliente? <%= @expense_subtype.needs_customer ? 'Sim' : 'Não' %> </p>

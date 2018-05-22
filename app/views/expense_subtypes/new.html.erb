@@ -15,7 +15,7 @@
   </div>
     <div>
     <%= f.label :needs_customer, 'Precisa de um cliente?' %>
-    <%= select(:needs_customer,false,[['Sim', true], ['Não', false]]) %>
+    <%= f.select(:needs_customer,options_for_select([['Sim', true], ['Não', false]],false)) %>
   </div>
   <%= f.submit 'Cadastrar' %>
 <% end %>

@@ -9,7 +9,7 @@ class ExpenseSubtypesController < ApplicationController
 
     expense_subtype_params = params.require(:expense_subtype).permit(
                                                 :description, :accounting_account,
-                                                :expense_type_id)
+                                                :expense_type_id, :needs_customer)
 
     @expense_subtype = ExpenseSubtype.create(expense_subtype_params)
 
