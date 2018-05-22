@@ -1,9 +1,10 @@
 require 'rails_helper'
 
-feature 'User view a expense in home' do
+feature 'User add a customer to expense' do
   scenario 'successfully' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    expense_type = ExpenseType.create(description: 'Despesa com Hospedagem')
     customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
@@ -14,22 +15,24 @@ feature 'User view a expense in home' do
     expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
-                                    accounting_account: '632.250',
-                                    expense_type_id: expense_type.id)
-
-    expense = Expense.create(value: 150, expense_report: expense_report,
-                            expense_subtype: expense_subtype,
-                            customer: customer)
+                            accounting_account: '632.250',
+                            expense_type_id: expense_type.id)
 
     # Navegação
     visit root_path
     fill_in 'Email', with: 'glauco.margarido@gmail.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Log in'
-    click_on expense_report.title
+    click_on 'Despesas de Abril'
+    click_on 'Cadastrar uma despesa'
+    select 'Almoço', from: 'Classificação'
+    fill_in 'Valor', with: '300'
+    select 'Petrobras', from: 'Cliente'
+    click_on 'Salvar'
 
     # Expectativa
-    expect(page).to have_css('h3', text: 'Despesas')
-    expect(page).to have_css('li', text: '150')
+    expect(page).to have_css('h6', text: 'Almoço')
+    expect(page).to have_css('li', text: 'Cliente: Petrobras')
+    expect(page).to have_css('li', text: 'Valor: R$ 300.0')
   end
 end

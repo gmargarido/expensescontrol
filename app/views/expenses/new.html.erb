@@ -6,6 +6,10 @@
     <%= f.collection_select(:expense_subtype_id, @expense_subtypes, :id, :description) %>
   </div>
   <div>
+    <%= f.label :customer_id, 'Cliente' %>
+    <%= f.collection_select(:customer_id, @customers, :id, :name) %>
+  </div>
+  <div>
     <%= f.label :value, 'Valor' %>
     <%= f.text_field :value %>
   </div>

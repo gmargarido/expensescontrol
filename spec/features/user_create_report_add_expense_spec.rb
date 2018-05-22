@@ -4,7 +4,7 @@ feature 'User create a report and add to it a expense' do
   scenario 'successfully' do
     # Criação dos dados
     user = User.create!(email: 'glauco.margarido@gmail.com', password: '12345678')
-
+    customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199')
     expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
 
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
@@ -25,6 +25,7 @@ feature 'User create a report and add to it a expense' do
     click_on 'Cadastrar uma despesa'
     select 'Almoço', from: 'Classificação'
     fill_in 'Valor', with: '25.9'
+    select 'Petrobras', from: 'Cliente'
     click_on 'Salvar'
 
     # Expectativa

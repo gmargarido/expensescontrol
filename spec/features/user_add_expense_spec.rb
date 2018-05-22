@@ -4,6 +4,8 @@ feature 'User add a expense' do
   scenario 'successfully' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+
+    customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
@@ -26,6 +28,7 @@ feature 'User add a expense' do
     click_on 'Cadastrar uma despesa'
     select 'Almoço', from: 'Classificação'
     fill_in 'Valor', with: '25.9'
+    select 'Petrobras', from: 'Cliente'
     click_on 'Salvar'
 
     # Expectativa
@@ -37,6 +40,7 @@ feature 'User add a expense' do
   scenario 'and must fill all fields' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199')
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
@@ -57,6 +61,7 @@ feature 'User add a expense' do
     click_on expense_report.title
     click_on 'Cadastrar uma despesa'
     fill_in 'Valor', with: ''
+    select 'Petrobras', from: 'Cliente'
     click_on 'Salvar'
 
     # Expectativa

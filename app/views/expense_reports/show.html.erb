@@ -6,6 +6,7 @@
 <% @expense_report.expenses.each do |expense| %>
   <h6><%= expense.expense_subtype.description %></h6>
   <ul>
+    <li>Cliente: <%= expense.customer.name %> </li>
     <li>Valor: R$ <%= expense.value %> </li>
     <br />
   </ul>
