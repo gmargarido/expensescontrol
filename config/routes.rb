@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   end
   resources :expense_types, only: [:new, :create, :show]
   resources :expense_subtypes, only: [:new, :create, :show]
+  resources :customers, only: [:new, :create, :show]
 end
