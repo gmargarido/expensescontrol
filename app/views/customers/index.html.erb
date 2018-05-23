@@ -1,0 +1,6 @@
+<h3>Clientes Ativos</h3>
+
+<h3>Clientes Pendentes</h3>
+<%= @pending_customers.each do |customer| %>
+  <%= link_to customer.name, customer_path(customer) %>
+<% end %>

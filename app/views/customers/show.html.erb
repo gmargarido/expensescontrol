@@ -3,3 +3,7 @@
 <p>Razão Social: <%= @customer.social_name %></p>
 <p>CNPJ: <%= @customer.cnpj %></p>
 <p>Cadastrado por: <%= @customer.user.email %> </p>
+
+<p>Status: <%= @customer.status %>
+
+<%= link_to 'Aprovar', customer_approve_path(@customer), method: :post %>
