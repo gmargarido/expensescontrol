@@ -10,7 +10,7 @@ class CustomersController < ApplicationController
     if @customer.save
       redirect_to @customer
     else
-      flash[:error] = 'Não foi possível criar este cliente'
+      flash[:error] = 'Não foi possível cadastrar este cliente'
       render :new
     end
   end

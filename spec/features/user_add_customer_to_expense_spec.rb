@@ -5,7 +5,8 @@ feature 'User add a customer to expense' do
     # Criação dos dados
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     expense_type = ExpenseType.create(description: 'Despesa com Hospedagem')
-    customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199')
+    customer = Customer.create(name: 'Petrobras', social_name: 'Petrobras SA',
+                              cnpj: '12345678000199', user: user)
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
                                           start_date: '01/04/2018',
                                           end_date: '30/04/2018',
