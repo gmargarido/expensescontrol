@@ -21,4 +21,10 @@ class ExpenseReportsController < ApplicationController
       render :new
     end
   end
+
+  def submit
+    @expense_report = ExpenseReport.find(params[:expense_report_id])
+    @expense_report.submitted!
+    redirect_to @expense_report
+  end
 end

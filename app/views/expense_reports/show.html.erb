@@ -11,3 +11,10 @@
     <br />
   </ul>
 <% end %>
+
+<% if @expense_report.status = "saved" %>
+  <%= link_to 'Submeter à aprovação', expense_report_submit_path(@expense_report), method: :post %>
+<% else %>
+  <p>Status: <%= @expense_report.status %></p>
+<% end %>
+<%= link_to 'Voltar', root_path %>

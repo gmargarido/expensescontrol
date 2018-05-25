@@ -21,7 +21,6 @@ feature 'User add a expense' do
 
     # Navegação
     visit root_path
-    visit root_path
     fill_in 'Email', with: 'glauco.margarido@gmail.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Log in'
