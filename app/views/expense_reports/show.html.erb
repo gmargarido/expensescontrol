@@ -6,15 +6,20 @@
 <% @expense_report.expenses.each do |expense| %>
   <h6><%= expense.expense_subtype.description %></h6>
   <ul>
-    <li>Cliente: <%= expense.customer.name %> </li>
+    <% if expense.customer_id? %>
+      <li>Cliente: <%= expense.customer.name %> </li>
+    <% end %>
     <li>Valor: R$ <%= expense.value %> </li>
     <br />
   </ul>
 <% end %>
 
-<% if @expense_report.status = "saved" %>
+<% if @expense_report.status == 'saved' %>
   <%= link_to 'Submeter à aprovação', expense_report_submit_path(@expense_report), method: :post %>
+<% elsif @expense_report.status == 'submitted' %>
+  <p>Status: Aguardando aprovação</p>
 <% else %>
   <p>Status: <%= @expense_report.status %></p>
 <% end %>
+<br />
 <%= link_to 'Voltar', root_path %>
