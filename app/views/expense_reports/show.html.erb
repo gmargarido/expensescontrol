@@ -14,12 +14,16 @@
   </ul>
 <% end %>
 
-<% if @expense_report.status == 'saved' %>
-  <%= link_to 'Submeter à aprovação', expense_report_submit_path(@expense_report), method: :post %>
-<% elsif @expense_report.status == 'submitted' %>
-  <p>Status: Aguardando aprovação</p>
+<% if current_user.approver? %>
+  <%= link_to 'Aprovar', expense_report_approve_path(@expense_report) %>
 <% else %>
-  <p>Status: <%= @expense_report.status %></p>
+  <% if @expense_report.status == 'saved' %>
+    <%= link_to 'Submeter à aprovação', expense_report_submit_path(@expense_report), method: :post %>
+  <% elsif @expense_report.status == 'submitted' %>
+    <p>Status: Aguardando aprovação</p>
+  <% else %>
+    <p>Status: <%= @expense_report.status %></p>
+  <% end %>
 <% end %>
 <br />
 <%= link_to 'Voltar', root_path %>

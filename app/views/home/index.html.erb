@@ -7,7 +7,11 @@
   <%= link_to 'Cadastrar Subtipo de Despesa', new_expense_subtype_path %> <br/>
   <%= link_to 'Clientes', customers_path %>
 </div>
-<% @expense_reports.each do |report| %>
-  <br />
-  <%= link_to report.title, expense_report_path(report) %>
+<% if @expense_reports.any? %>
+  <% @expense_reports.each do |report| %>
+    <br />
+    <%= link_to report.title, expense_report_path(report) %>
+  <% end %>
+<% else %>
+  <p>Não existem Relatórios de Despesas</p>
 <% end %>
