@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'User add a expense' do
   scenario 'successfully' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678',
+                        profile: "salesman")
 
     customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199',
                                 social_name: 'Petrobras S/A', user: user)
@@ -39,7 +40,8 @@ feature 'User add a expense' do
 
   scenario 'and must fill all fields' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678',
+                        profile: "salesman")
     customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199',
                                 social_name: 'Petrobras S/A', user: user)
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',

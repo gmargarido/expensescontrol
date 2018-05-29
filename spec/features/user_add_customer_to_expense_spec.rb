@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'User add a customer to expense' do
   scenario 'successfully' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    user = User.create!(email: 'glauco.margarido@gmail.com', password: '12345678',
+                      profile: "salesman")
     expense_type = ExpenseType.create(description: 'Despesa com Hospedagem')
     customer = Customer.create(name: 'Petrobras', social_name: 'Petrobras SA',
                               cnpj: '12345678000199', user: user)

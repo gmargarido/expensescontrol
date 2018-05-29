@@ -3,6 +3,7 @@ require 'rails_helper'
 feature 'Approver accept a customer registered' do
   scenario 'successfully' do
     # Criação dos dados
+    approver = User.create(email: 'adm@bray.com', password: '12345678')
     user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
     customer = Customer.create!(name: 'Petrobras', cnpj: '00132072000253',
                                 social_name: 'Petrobras Petroquimica S/A',
@@ -10,7 +11,7 @@ feature 'Approver accept a customer registered' do
 
     # Navegação
     visit root_path
-    fill_in 'Email', with: 'glauco.margarido@gmail.com'
+    fill_in 'Email', with: 'adm@bray.com'
     fill_in 'Senha', with: '12345678'
     click_on 'Log in'
     click_on 'Clientes'

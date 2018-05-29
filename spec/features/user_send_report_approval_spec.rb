@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'User submit a report to approval' do
   scenario 'successfully' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678',
+                        profile: "salesman")
     expense_type = ExpenseType.create!(description: 'Despesa com Hospedagem')
     expense_subtype = ExpenseSubtype.create!(description: 'Almoço',
                             accounting_account: '632.250',

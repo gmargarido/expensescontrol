@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'User view a expense in home' do
   scenario 'successfully' do
     # Criação dos dados
-    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678')
+    user = User.create(email: 'glauco.margarido@gmail.com', password: '12345678',
+                        profile: "salesman")
     customer = Customer.create(name: 'Petrobras', cnpj: '12345678000199',
                                 social_name: 'Petrobras S/A', user: user)
     expense_report = ExpenseReport.create(title: 'Despesas de Abril',
