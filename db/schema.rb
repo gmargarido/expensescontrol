@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 20180530042009) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.string "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expense_report_id"
-    t.integer "user_id"
+    t.bigint "expense_report_id"
+    t.bigint "user_id"
     t.index ["expense_report_id"], name: "index_comments_on_expense_report_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 20180530042009) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "social_name"
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "status", default: 0
     t.index ["user_id"], name: "index_customers_on_user_id"
   end
@@ -40,7 +43,7 @@ ActiveRecord::Schema.define(version: 20180530042009) do
     t.boolean "own_car"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.integer "status", default: 0
     t.index ["user_id"], name: "index_expense_reports_on_user_id"
   end
@@ -50,7 +53,7 @@ ActiveRecord::Schema.define(version: 20180530042009) do
     t.string "accounting_account"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expense_type_id"
+    t.bigint "expense_type_id"
     t.boolean "needs_customer"
     t.index ["expense_type_id"], name: "index_expense_subtypes_on_expense_type_id"
   end
@@ -65,9 +68,9 @@ ActiveRecord::Schema.define(version: 20180530042009) do
     t.float "value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "expense_report_id"
-    t.integer "expense_subtype_id"
-    t.integer "customer_id"
+    t.bigint "expense_report_id"
+    t.bigint "expense_subtype_id"
+    t.bigint "customer_id"
     t.index ["customer_id"], name: "index_expenses_on_customer_id"
     t.index ["expense_report_id"], name: "index_expenses_on_expense_report_id"
     t.index ["expense_subtype_id"], name: "index_expenses_on_expense_subtype_id"
@@ -91,4 +94,12 @@ ActiveRecord::Schema.define(version: 20180530042009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "expense_reports"
+  add_foreign_key "comments", "users"
+  add_foreign_key "customers", "users"
+  add_foreign_key "expense_reports", "users"
+  add_foreign_key "expense_subtypes", "expense_types"
+  add_foreign_key "expenses", "customers"
+  add_foreign_key "expenses", "expense_reports"
+  add_foreign_key "expenses", "expense_subtypes"
 end
