@@ -14,7 +14,24 @@
   </ul>
 <% end %>
 
+<h4>Comentários</h4>
+<% if @expense_report.comments.any? %>
+  <% @expense_report.comments.each do |comment| %>
+    <b><%= comment.user.email %></b> <br />
+    <p><%= comment.message %></p>
+    <hr>
+  <% end %>
+<% else %>
+  <p> Ainda não existem comentários.</p>
+<% end %>
 <% if current_user.approver? %>
+  <%= form_for([@expense_report,@comment]) do |f| %>
+    <div>
+      <%= f.label :message, 'Adicionar comentário'%> <br/>
+      <%= f.text_area :message %> <br />
+    </div>
+    <%= f.submit 'Enviar comentário' %>
+  <% end %>
   <%= link_to 'Aprovar', expense_report_approve_path(@expense_report) %>
 <% else %>
   <% if @expense_report.status == 'saved' %>
@@ -23,6 +40,15 @@
     <p>Status: Aguardando aprovação</p>
   <% else %>
     <p>Status: <%= @expense_report.status %></p>
+
+    <%= form_for([@expense_report,@comment]) do |f| %>
+      <div>
+        <%= f.label :message, 'Adicionar comentário'%> <br/>
+        <%= f.text_area :message %> <br />
+      </div>
+      <%= f.submit 'Enviar comentário' %>
+    <% end %>
+
   <% end %>
 <% end %>
 <br />

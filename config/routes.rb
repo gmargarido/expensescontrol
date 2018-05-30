@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :expense_reports, only: [:new, :create, :show] do
     resources :expenses, only: [:new, :create, :show]
+    resources :comments, only: [:new, :create, :show]
     post 'submit'
     post 'approve'
   end

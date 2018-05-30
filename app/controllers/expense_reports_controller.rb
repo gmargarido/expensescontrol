@@ -1,6 +1,7 @@
 class ExpenseReportsController < ApplicationController
   def show
     @expense_report = ExpenseReport.find(params[:id])
+    @comment = Comment.new
   end
 
   def new
